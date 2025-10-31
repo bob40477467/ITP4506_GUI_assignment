@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <link rel="stylesheet" href="header.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 25px;
+        }
+
+        .main {
+            display: flex;
+            margin: 20px auto;
+            gap: 20px;
+        }
+
+        .filter {
+            width: 30%;
+            background-color: #eae9e9;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 220px;
+        }
+
+        .filter label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bolder;
+        }
+
+        input[type="text"],
+        select {
+            color: #868d92;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .product {
+            display: grid;
+            gap: 20px;
+            text-align: center;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .product img,
+        .product-details img {
+            width: 100%;
+            height: auto;
+            min-width: 200px;
+            border: solid;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        @media (min-width: 551px) and (max-width: 1499px) {
+            .product {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            body {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .product {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            body {
+                font-size: 15px;
+            }
+        }
+
+        .product-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            overflow: auto;
+          
+     
+        }
+
+        .product-modal-content {
+            position: relative;
+            margin: 15% auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            display: flex;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-size: 30px;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .product-details img {
+            width: 70%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #899397;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="header">
+        <div class="titleName"><a href="./index.html">Smile & Sunshine Toy</a></div>
+        
+        
+        <div class="right">
+
+            <a href="shopping.html" class="button">Shopping</a>
+            <a href="order_record.html" class="button">Order Record</a> 
+            
+            <a href="#" class="user-avatar" onclick="toggleDropdown()">
+                <img src="Design/User.png" alt="user">
+            </a>
+            <div id="dropdown" class="dropdown-content">
+                <a href="user_account.html">My Account</a>
+                <a href="#">Sign Out</a>
+            </div>
+            
+            
+            
+       
+        </div>
+    
+    </div>
+
+    <div class="main">
+        <div class="filter">
+            <h3>Filter</h3>
+            <input type="text" placeholder="Enter Toy Name">
+            <label><input type="checkbox" name="category" value="educational"> Educational</label>
+            <label><input type="checkbox" name="category" value="electronic"> Electronic</label>
+            <label><input type="checkbox" name="category" value="puzzle"> Puzzles</label>
+            <label><input type="checkbox" name="category" value="stuffed"> Stuffed Toys</label>
+            <select name="sort" id="sort" value="Sort by">
+                <option value="" disabled selected>Sort by</option>
+                <option value="nto">Newest to Oldest</option>
+                <option value="otn">Oldest to Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="pop">Popularity</option>
+            </select>
+        </div>
+
+        <div class="product">
+            <div onclick="openModal(1)">
+                <img src="product/1.jpg" alt="Product 1">
+                <p>Product 1 - $100.00</p>
+            </div>
+            <div onclick="openModal(2)">
+                <img src="product/2.jpg" alt="Product 2">
+                <p>Product 2 - $100.00</p>
+            </div>
+            <div onclick="openModal(3)">
+                <img src="product/3.jpg" alt="Product 3">
+                <p>Product 3 - $100.00</p>
+            </div>
+            <div onclick="openModal(4)">
+                <img src="product/4.jpg" alt="Product 4">
+                <p>Product 4 - $100.00</p>
+            </div>
+            <div onclick="openModal(5)">
+                <img src="product/5.jpg" alt="Product 5">
+                <p>Product 5 - $100.00</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-modal" class="product-modal">
+        <div class="product-modal-content">
+            <span id="close-modal" class="close-modal">&times;</span>
+            
+               <div class="product-details">
+                    <img id="modal-product-image" src="#" alt="Product">
+                   <div class="">
+                    <h2 id="modal-product-title">Product</h2>
+                    <div id="modal-product-description">Product Description: </div>
+                    <div id='modal-product-area'>Production Areas:</div>
+                    <div id="modal-product-price">Price: $0.00</div>
+                    <div class="button-container">
+                        <a href="payment.html" class="button">Buy</a>
+                        <button id="close-button" class="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const products = {
+            1: {
+                name: "Product 1",
+                description: "A Car",
+                area: "China",
+                price: 100.00,
+                image: "product/1.jpg"
+            },
+            2: {
+                name: "Product 2",
+                description: "An Airplane",
+                area: "China",
+                price: 100.00,
+                image: "product/2.jpg"
+            },
+            3: {
+                name: "Product 3",
+                description: "A Robot",
+                area: "China",
+                price: 100.00,
+                image: "product/3.jpg"
+            },
+            4: {
+                name: "Product 4",
+                description: "A UFO",
+                area: "China",
+                price: 100.00,
+                image: "product/4.jpg"
+            },
+            5: {
+                name: "Product 5",
+                description: "A Cat",
+                area: "China",
+                price: 100.00,
+                image: "product/5.jpg"
+            }
+        };
+
+        function openModal(productId) {
+            const product = products[productId];
+            if (product) {
+                document.getElementById('modal-product-title').textContent = product.name;
+                document.getElementById('modal-product-description').textContent = `Description: ${product.description}`;
+                document.getElementById('modal-product-price').textContent = `Price: $${product.price.toFixed(2)}`;
+                document.getElementById('modal-product-area').textContent = `Production Areas: ${product.area}`;
+                document.getElementById('modal-product-image').src = product.image;
+                document.getElementById('modal-product-image').alt = product.name;
+                document.getElementById('product-modal').style.display = 'block';
+            }
+        }
+
+        document.getElementById('close-modal').onclick = function() {
+            document.getElementById('product-modal').style.display = 'none';
+        };
+
+        document.getElementById('close-button').onclick = function() {
+            document.getElementById('product-modal').style.display = 'none';
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>User Account</title>
+    <link rel="stylesheet" href="header.css">
+
+    <style>
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            border: calc();
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background-color: white display: flex;
+
+        }
+
+        div input,
+        div select {
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .required {
+            color: red;
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #899397;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+</head>
+
+
+<body>
+    <div class="header">
+        <div class="titleName"><a href="./index.html">Smile & Sunshine Toy</a></div>
+        <div class="right">
+            <a href="shopping.html" class="button">Shopping</a>
+            <a href="order_record.html" class="button">Order Record</a>
+            <a href="#" class="user-avatar" onclick="toggleDropdown()">
+                <img src="Design/User.png" alt="user">
+            </a>
+            <div id="dropdown" class="dropdown-content">
+                <a href="user_account.html">My Account</a>
+                <a href="#">Sign Out</a>
+            </div>
+        </div>
+    </div>
+    <main>
+        <h1>My Account Information</h1>
+        <form id="updateForm">
+            <fieldset>
+                <div>User ID:
+                    <input type="text" name="user-id" value="CID00001" readonly />
+                </div>
+
+                <div>First Name:
+                    <input type="text" name="first-name" value="CHANTAI MAN" readonly />
+                    Last Name:
+                    <input type="text" name="last-name" value="CHAN" readonly />
+                </div>
+                <div>
+                    Gender:
+                    <input type="radio" name="gender" value="M" checked="checked" disabled /> Male
+                    <input type="radio" name="gender" value="F" disabled /> Female
+                    <input type="radio" name="gender" value="U" disabled /> Undisclosed
+                </div>
+                <div> <span class="required">*</span>Contact Number:
+                    <input type="text" name="phoneno" maxlength="8" value="12345678" required />
+                </div>
+                <div><span class="required">*</span>Email Address:
+                    <input type="email" id="email" name="email" value="ChanTaiMam@gamil.com">
+                </div>
+                <div><span class="required">*</span>Company Name:
+                    <input type="text" name="company-name" value="Sad & Darkness Toy Co, Ltd"/>
+                </div>
+
+                <div><span class="required">*</span>Room:
+                    <input type="text" name="room" value="Room C346" required />
+                    <span class="required">*</span>House/Street:
+                    <input type="text" name="house" value="20 Tsing Yi Road" required />
+                </div>
+                <div><span class="required">*</span>District:
+                    <input type="text" name="district" value="Tsing Yi Island" required />
+                    <span class="required">*</span>Region:
+                    <select name="region">
+                        <option value="Hong Kong">Hong Kong Island</option>
+                        <option value="Kowloon">Kowloon</option>
+                        <option value="New Territories">New Territories</option>
+                    </select>
+                </div>
+
+                <div><span class="required">*</span>City:
+                    <input type="text" name="city" value="Hong Kong" required />
+                </div>
+                <div>
+                    <input type="checkbox" name="byemail" value="byemail" checked="checked" />I would like to receive any promotional information by email
+                </div>
+                <div><input type="checkbox" name="byphone" value="byphone" checked="checked" />I would like to receive any promotional information by phone
+                </div>
+
+            </fieldset>
+            <a href="change_password.html" class="button">Change Password</a>
+            <input class="button" type="submit" value="Update" />
+
+        </form>
+    </main>
+
+    <script>
+        document.getElementById("updateForm").addEventListener("submit", function(event) {
+            if (this.checkValidity()) {
+                alert('Updated');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!-- Wish List: View → Edit → Submit Quote Request -->
+<script>
+    const user = getCurrentUser();
+    let quotes = JSON.parse(localStorage.getItem('quotes') || '[]');
+    const myQuotes = quotes.filter(q => q.customerEmail === user.email && q.status === 'Pending');
+
+    // Render list
+    const list = document.getElementById('wishlist');
+    myQuotes.forEach(q => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+      <img src="${q.toy.sketch}" width="100">
+      <p><strong>Dimensions:</strong> ${q.toy.dimensions}</p>
+      <p><strong>Color:</strong> <span class="color-preview" style="background:${q.toy.pantone}"></span></p>
+      <p><strong>Materials:</strong> ${q.toy.materials}</p>
+      <p><strong>Qty:</strong> ${q.toy.quantity}</p>
+      <button class="btn btn-primary" onclick="submitQuote('${q.id}')">Submit Request</button>
+      <button class="btn btn-danger" onclick="removeQuote('${q.id}')">Remove</button>
+    `;
+        list.appendChild(div);
+    });
+
+    window.submitQuote = function(id) {
+        quotes = quotes.map(q => q.id === id ? {...q, status: 'Submitted'} : q);
+        localStorage.setItem('quotes', JSON.stringify(quotes));
+        alert('Quote request submitted! Track in History.');
+        location.reload();
+    };
+
+    window.removeQuote = function(id) {
+        if (confirm('Remove this design?')) {
+            quotes = quotes.filter(q => q.id !== id);
+            localStorage.setItem('quotes', JSON.stringify(quotes));
+            location.reload();
+        }
+    };
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smile & Sunshine Toy Co index</title>
+    <link rel="stylesheet" href="header.css">
+    <style>
+        img[src="Design/main.jpg"] {
+            width: 70%;
+            /*height: auto;*/
+            display: block;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="titleName"><a href="./index.html">Smile & Sunshine Toy</a></div>
+        <div class="right">
+            <a href="shopping.html" class="button">Shopping</a>
+            <a href="order_record.html" class="button">Order Record</a>
+            <a href="#" class="user-avatar" onclick="toggleDropdown()">
+                <img src="Design/User.png" alt="user">
+            </a>
+            <div id="dropdown" class="dropdown-content">
+                <a href="user_account.html">My Account</a>
+                <a href="#">Sign Out</a>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <h1>Welcome to Smile & Sunshine Toy!!!</h1>
+        <img src="Design/main.jpg" alt="main">
+    </div>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdown");
+            dropdown.classList.toggle("show");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+# Customers
+customer1@email.com | pass123 | Customer | Alice Wong | 91234567
+customer2@email.com | pass456 | Customer | Bob Chan | 98765432
+
+# Sales Staff
+staff1@smile.com | staff123 | Staff | Sam Lee | S001
+staff2@smile.com | staff456 | Staff | Tina Ho | S002

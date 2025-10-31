@@ -1,0 +1,19 @@
+[
+  {
+    "id": "Q001",
+    "customerEmail": "customer1@email.com",
+    "status": "Pending",
+    "createdAt": "2025-10-30",
+    "toy": {
+      "sketch": "sketch1.jpg",
+      "dimensions": "20x15x10 cm",
+      "pantone": "#FF5733",
+      "materials": "Cotton fabric, polyester stuffing, plastic eyes",
+      "quantity": 50
+    },
+    "paymentMethod": "Credit Card",
+    "quote": null,
+    "deliveryDate": null,
+    "messages": []
+  }
+]

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="header.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .right a:hover {
+            background-color: #777;
+        }
+
+        main {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-group a[type="submit"] {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-group a[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .form-footer a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 30px;
+            background: none;
+            border: none;
+            font-size: 14px;
+        }
+
+        .toggle-password img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="titleName"><a href="non_login_index.html">Smile & Sunshine Toy</a></div>
+        <div class="right">
+            <a href="login.html" class="button">Log in</a>
+            <a href="register.html" class="button">Register</a>
+        </div>
+    </div>
+
+    <main>
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="button" class="toggle-password" onclick="togglePassword('password', this)">
+                    <img src="Design/eye-close.png" alt="toggle">
+                </button>
+            </div>
+            <div class="form-group">
+                <a href="index.html" type="submit"> Log in</a>
+            </div>
+        </form>
+        <div class="form-footer">
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </main>
+
+    <script>
+
+
+        function togglePassword(fieldId, button) {
+            var field = document.getElementById(fieldId);
+            var img = button.querySelector("img");
+            if (field.type === "password") {
+                field.type = "text";
+                img.src = "Design/eye-open.png";  // Change to an open eye image
+            } else {
+                field.type = "password";
+                img.src = "Design/eye-close.png"; // Change to a closed eye image
+            }
+        }
+    </script>
+</body>
+
+</html>

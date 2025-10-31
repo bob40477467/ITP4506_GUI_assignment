@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Register</title>
+    <link rel="stylesheet" href="header.css">
+
+    <style>
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        div input,
+        div select {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .required {
+            color: red;
+            font-weight: bold;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            width: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .password-container {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="titleName"><a href="./index.html">Smile & Sunshine Toy</a></div>
+        <div class="right">
+            <a href="login.html" class="button">Log in</a>
+        </div>
+    </div>
+
+    <main>
+        <h1>Create an Account</h1>
+        <form id="registerForm">
+            <fieldset>
+                <div><span class="required">*</span>First Name:
+                    <input type="text" name="first-name" required />
+                </div>
+
+                <div><span class="required">*</span>Last Name:
+                    <input type="text" name="last-name" required />
+                </div>
+
+                <div><span class="required">*</span>Email Address:
+                    <input type="email" name="email" required />
+                </div>
+
+                <div class="password-container">
+                    <span class="required">*</span>Password:
+                    <input type="password" name="password" id="password" required />
+                    <img src="Design/eye-open.png" alt="eye" class="eye-icon" id="eye-icon" onclick="togglePasswordVisibility()">
+                </div>
+
+                <div class="password-container">
+                    <span class="required">*</span>Confirm Password:
+                    <input type="password" name="confirm-password" id="confirm-password" required />
+                    <img src="Design/eye-open.png" alt="eye" class="eye-icon" id="confirm-eye-icon" onclick="toggleConfirmPasswordVisibility()">
+                </div>
+
+                <div><span class="required">*</span>Contact Number:
+                    <input type="text" name="phoneno" maxlength="8" required />
+                </div>
+
+                <div><span class="required">*</span>Company Name:
+                    <input type="text" name="company-name" required />
+                </div>
+
+                <div><span class="required">*</span>Room:
+                    <input type="text" name="room" required />
+                </div>
+
+                <div><span class="required">*</span>House/Street:
+                    <input type="text" name="house" required />
+                </div>
+
+                <div><span class="required">*</span>District:
+                    <input type="text" name="district" required />
+                </div>
+
+                <div><span class="required">*</span>Region:
+                    <select name="region" required>
+                        <option value="Hong Kong">Hong Kong Island</option>
+                        <option value="Kowloon">Kowloon</option>
+                        <option value="New Territories">New Territories</option>
+                    </select>
+                </div>
+
+                <div><span class="required">*</span>City:
+                    <input type="text" name="city" required />
+                </div>
+
+                <div>
+                    <input type="checkbox" name="byemail" value="byemail" checked="checked" />I would like to receive promotional information by email
+                </div>
+
+                <div><input type="checkbox" name="byphone" value="byphone" />I would like to receive promotional information by phone
+                </div>
+            </fieldset>
+
+            <input type="submit" value="Register" class="button" />
+        </form>
+    </main>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordField = document.getElementById("password");
+        var eyeIcon = document.getElementById("eye-icon");
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            eyeIcon.src = "Design/eye-open.png";
+        } else {
+            passwordField.type = "password";
+            eyeIcon.src = "Design/eye-close.png";
+        }
+    }
+
+    function toggleConfirmPasswordVisibility() {
+        var confirmPasswordField = document.getElementById("confirm-password");
+        var confirmEyeIcon = document.getElementById("confirm-eye-icon");
+
+        if (confirmPasswordField.type === "password") {
+            confirmPasswordField.type = "text";
+            confirmEyeIcon.src = "Design/eye-open.png";
+        } else {
+            confirmPasswordField.type = "password";
+            confirmEyeIcon.src = "Design/eye-close.png";
+        }
+    }
+
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var password = document.querySelector('input[name="password"]').value;
+        var confirmPassword = document.querySelector('input[name="confirm-password"]').value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+        } else {
+            alert("Registration successful!");
+            // Add your registration logic here (e.g., send data to a server)
+        }
+    });
+
+    // Instant password match check
+    document.getElementById("confirm-password").addEventListener("input", function() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirm-password").value;
+
+        if (password !== confirmPassword) {
+            document.getElementById("registerForm").querySelector("input[type='submit']").disabled = true;
+        } else {
+            document.getElementById("registerForm").querySelector("input[type='submit']").disabled = false;
+        }
+    });
+</script>
+</body>
+
+</html>
